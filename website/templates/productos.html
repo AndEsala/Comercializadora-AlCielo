@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+    <h1>Productos</h1>
+
+    <!-- Botón de Creación de Tiendas -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTiendaModal">
+        Agregar Producto
+    </button>
+
+    <div class="modal fade" id="addTiendaModal" tabindex="-1" aria-labelledby="addTiendaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTiendaModalLabel">Agregar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <form>
+                        <div class="mb-3">
+                            <label for="cod_producto" class="form-label">Código del Producto</label>
+                            <input type="text" class="form-control" id="cod_producto" name="cod_producto">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+            
+                        <div class="mb-3">
+                            <label for="subfamilia" class="form-label ">Subfamilia</label>
+                            <input type="number" min="1" class="form-control" id="subfamilia" name="subfamilia">
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Agregar Producto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tabla de Visualización de Tiendas -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Subfamilia</th>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <th scope="row">{{ producto.cod_producto }}</th>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.subfamilia }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

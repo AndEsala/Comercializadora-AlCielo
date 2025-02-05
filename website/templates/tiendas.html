@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Tiendas{% endblock %}
+{% block content %}
+    <h1>Tiendas</h1>
+
+    <!-- Botón de Creación de Tiendas -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTiendaModal">
+        Agregar Tienda
+    </button>
+
+    <div class="modal fade" id="addTiendaModal" tabindex="-1" aria-labelledby="addTiendaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTiendaModalLabel">Agregar Tienda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="codigo_postal" class="form-label
+                            ">Código Postal</label>
+                            <input type="text" class="form-control" id="codigo_postal" name="codigo_postal">
+                        </div>
+    
+                        <div class="mb-3 d-flex">
+                            <div class="me-1 w-50">
+                                <label for="latitud" class="form-label">Latitud</label>
+                                <input type="text" class="form-control" id="latitud" name="latitud">
+                            </div>
+                            
+                            <div class="ms-1 w-50">
+                                <label for="longitud" class="form-label">Longitud</label>
+                                <input type="text" class="form-control" id="longitud" name="longitud">
+                            </div>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="superficie" class="form-label">Superficie (m2)</label>
+                            <input type="text" class="form-control" id="superficie" name="superficie">
+                        </div>
+            
+                        <div class="mb-3">
+                            <label for="num_empleados" class="form-label ">N° Empleados</label>
+                            <input type="number" min="0" class="form-control" id="num_empleados" name="num_empleados">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="alquiler_base" class="form-label">Alquiler Base</label>
+                            <input type="number" min="0" class="form-control" id="alquiler_base" name="alquiler_base">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="anio_contrato" class="form-label">Año de Contrato</label>
+                            <input type="number" min="0" class="form-control" id="anio_contrato" name="anio_contrato">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tabla de Visualización de Tiendas -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Código Postal</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Superficie (m2)</th>
+                <th scope="col">N° Empleados</th>
+                <th scope="col">Alquiler Base</th>
+                <th scope="col">Año de Contrato</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Botella de Agua</td>
+                <td>2</td>
+                <td>1000</td>
+                <td>2000</td>
+                <td>El Cachaco</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

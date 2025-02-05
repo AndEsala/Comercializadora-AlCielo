@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Ventas{% endblock %}
+{% block content %}
+    <h1>Ventas</h1>
+
+    <!-- Botón de Creación de Tiendas -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTiendaModal">
+        Registrar Venta
+    </button>
+
+    <div class="modal fade" id="addTiendaModal" tabindex="-1" aria-labelledby="addTiendaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTiendaModalLabel">Registrar Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <form method="POST" action="/ventas">
+                        <div class="mb-3">
+                            <label for="producto" class="form-label">Producto</label>
+                            <select name="producto" id="producto" class="form-select">
+                                {% for producto in productos %}
+                                <option value="{{ producto.cod_producto }}">{{ producto.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" min="0" class="form-control" id="cantidad" name="cantidad">
+                        </div>
+    
+                        <div class="mb-3 d-flex">
+                            <div class="me-1 w-50">
+                                <label for="valor_unitario" class="form-label">Valor Unitario</label>
+                                <input type="number" min="0" class="form-control" id="valor_unitario" name="valor_unitario">
+                            </div>
+                            
+                            <div class="ms-1 w-50">
+                                <label for="tienda" class="form-label">Tienda</label>
+                                <select name="tienda" id="tienda" class="form-select">
+                                    {% for tienda in tiendas %}
+                                    <option value="{{ tienda.cod_tienda }}">{{ tienda.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Registrar Venta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tabla de Visualización de Ventas -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Valor Unitario</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col">Tienda</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <th scope="row">{{ venta.id_venta }}</th>
+                <td>{{ venta.producto.nombre }}</td>
+                <td>{{ venta.fecha }}</td>
+                <td>{{ venta.cantidad }}</td>
+                <td>{{ venta.valor_unitario }}</td>
+                <td>{{ venta.cantidad * venta.valor_unitario }}</td>
+                <td>{{ venta.tienda.nombre }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

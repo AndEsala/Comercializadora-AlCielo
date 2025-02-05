@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Tiendas{% endblock %}
+{% block content %}
+    <h1>Dashboard</h1>
+
+    <!-- Tiendas con Mayores Ingresos -->
+    <h2>Tiendas con Mayores Ingresos</h2>
+    {{ graphTiendas | safe }}
+
+    <!-- Productos más Vendidos -->
+    <h2>Productos más Vendidos</h2>
+    {{ graphProductos | safe }}
+
+    <!-- Tendencia de Ventas Mensuales -->
+    <!-- <h2>Tendencia de Ventas Mensuales</h2>
+    {{ graphTendencia | safe }} -->
+{% endblock %}
